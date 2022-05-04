@@ -16,13 +16,13 @@ export default function StartGrid (){
     return (
         <div>
             <h1>Choose your Grid</h1>
-            <form action="">
+            
                 <label> Choose Number of Plots:
                     <input type="number"  onChange={e => setNumGrids(numGrids + e.target.value)}></input>
                 </label>
                 <br/>
-                <button> Start Planting </button>
-            </form>
+                
+            
         </div>
     )} else {
         const gridArray = (num) => {
@@ -36,11 +36,30 @@ export default function StartGrid (){
         <div>
             <div>
                     <h1>Number of Plots: {Number(numGrids)}</h1>
+                    <button onClick={()=>{
+                        return (
+                            <label> Choose Number of Plots:
+                                <input type="number" onChange={e => setNumGrids(numGrids + e.target.value)}></input>
+                            </label>
+                        )
+                    }}>Change Plot Number</button>
             </div>
             <div>
                 {console.log(Number(numGrids))}
                 {gridArray(numGrids).map(function(num){
-                    return <div className='grids' key={num}>{num}</div>
+                    return <div className='grids' key={num}>
+                        <form action="">
+                            <label > Choose a Crop
+                                <select name="crops" >
+                                    <option value="wheat">Wheat</option>
+                                    <option value="corn">Corn</option>
+                                    <option value="beans">Beans</option>
+                                    <option value="rye">Rye</option>
+                                    <option value="brocoli">Brocoli</option>
+                                </select>
+                            </label>
+                        </form>
+                    </div>
                 })}
             </div>
         </div>
